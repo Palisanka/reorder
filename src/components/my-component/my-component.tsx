@@ -1,32 +1,52 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Component, h} from '@stencil/core';
+import "@ionic/core"
 
 @Component({
   tag: 'my-component',
-  styleUrl: 'my-component.css',
-  shadow: true
+  styleUrl: 'my-component.css'
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
 
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
+  reorder(event){
+    event.detail.complete();
+  }
 
-  /**
-   * The last name
-   */
-  @Prop() last: string;
-
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
+  componentDidLoad() {
+    const reordersElm = document.querySelectorAll('ion-reorder');
+    reordersElm.forEach((elm) => {
+      console.log(elm);
+      elm.addEventListener('click', () => {
+        console.log('click not canceled'); // doesn't log since 'ion-reorder' prevent and stopPropagation
+      });
+    });
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return [
+      <ion-list>
+        <ion-reorder-group disabled={false} onIonItemReorder={ev => this.reorder(ev)} >
+          <ion-reorder>
+            <ion-item>
+              <ion-label>Test 1</ion-label>
+            </ion-item>
+          </ion-reorder>
+          <ion-reorder>
+            <ion-item>
+              <ion-label>Test 2</ion-label>
+            </ion-item>
+          </ion-reorder>
+          <ion-reorder>
+            <ion-item>
+              <ion-label>Test 3</ion-label>
+            </ion-item>
+          </ion-reorder>
+          <ion-reorder>
+            <ion-item>
+              <ion-label>Test 4</ion-label>
+            </ion-item>
+          </ion-reorder>
+        </ion-reorder-group>
+      </ion-list>
+    ];
   }
 }
