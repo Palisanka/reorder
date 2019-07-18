@@ -21,30 +21,31 @@ export class MyComponent {
     });
   }
 
+  // 🚧WIP : using my-reorder makes the click available but the reorder doesn't work anymore
   render() {
     return [
       <ion-list>
         <ion-reorder-group disabled={false} onIonItemReorder={ev => this.reorder(ev)} >
-          <ion-reorder>
+          <my-reorder>
             <ion-item>
               <ion-label>Test 1</ion-label>
             </ion-item>
-          </ion-reorder>
-          <ion-reorder>
+          </my-reorder>
+          <my-reorder>
             <ion-item>
               <ion-label>Test 2</ion-label>
             </ion-item>
-          </ion-reorder>
-          <ion-reorder>
+          </my-reorder>
+          <my-reorder>
             <ion-item>
               <ion-label>Test 3</ion-label>
             </ion-item>
-          </ion-reorder>
-          <ion-reorder>
+          </my-reorder>
+          <my-reorder>
             <ion-item>
               <ion-label>Test 4</ion-label>
             </ion-item>
-          </ion-reorder>
+          </my-reorder>
         </ion-reorder-group>
       </ion-list>
     ];

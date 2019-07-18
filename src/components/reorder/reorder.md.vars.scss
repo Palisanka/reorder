@@ -1,0 +1,12 @@
+// @import "../../themes/ionic.globals.md";
+// Use style from node_modules
+@import "../../../node_modules/@ionic/core/dist/collection/themes/ionic.globals.md";
+
+// Material Design Reorder
+// --------------------------------------------------
+
+/// @prop - Font size of the reorder icon
+$reorder-md-icon-font-size:      31px !default;
+
+/// @prop - Opacity of the reorder icon
+$reorder-md-icon-opacity:        .3 !default;

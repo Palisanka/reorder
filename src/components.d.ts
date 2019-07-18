@@ -9,20 +9,8 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
+  interface MyComponent {}
+  interface MyReorder {}
 }
 
 declare global {
@@ -33,29 +21,25 @@ declare global {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
+
+  interface HTMLMyReorderElement extends Components.MyReorder, HTMLStencilElement {}
+  var HTMLMyReorderElement: {
+    prototype: HTMLMyReorderElement;
+    new (): HTMLMyReorderElement;
+  };
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'my-reorder': HTMLMyReorderElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent extends JSXBase.HTMLAttributes<HTMLMyComponentElement> {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
+  interface MyComponent extends JSXBase.HTMLAttributes<HTMLMyComponentElement> {}
+  interface MyReorder extends JSXBase.HTMLAttributes<HTMLMyReorderElement> {}
 
   interface IntrinsicElements {
     'my-component': MyComponent;
+    'my-reorder': MyReorder;
   }
 }
 
